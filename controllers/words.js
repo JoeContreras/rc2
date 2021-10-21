@@ -1,27 +1,44 @@
 const Text = require("../models/words");
-const ChilkatExample= require("../utils/rc2Encryption")
+const ChilkatExample = require("../utils/rc2Encryption");
 const DecryptString = require("../utils/rc2Decryption");
 
-
 const TextCtrl = {
-    create: async (req, res) => {
-        const { text } = req.body
-        const encryptedText =  ChilkatExample(text)
-        const newText = new Text({
-            text: encryptedText
-        });
+  create: async (req, res) => {
+    const { text } = req.body;
+    const encryptedText = ChilkatExample(text);
+    const newText = new Text({
+      text: encryptedText,
+    });
 
-        try {
-            await newText.save();
-            res.json(encryptedText);
-        } catch (err) {
-            return res.status(400).json({ msg: err.message });
-        }
-    },
-    fetchMany: async (req, res) => {
-        try {
-            const project = await Text.find();
+    try {
+      await newText.save();
+      res.json(encryptedText);
+    } catch (err) {
+      return res.status(400).json({ msg: err.message });
+    }
+  },
+  fetchMany: async (req, res) => {
+    try {
+      const project = await Text.find();
 
+      const result = project.map((currentObject) => {
+        const decText = DecryptString(currentObject.text);
+
+        return {
+          text: decText,
+        };
+      });
+
+      res.status(200).json(result);
+    } catch (err) {
+      return res.status(400).json({ msg: err.message });
+    }
+  },
+  fetchOg: async (req, res) => {
+    try {
+      const project = await Text.find();
+
+      /*
             const result = project.map((currentObject) =>{
                 const decText= DecryptString(currentObject.text)
 
@@ -30,13 +47,14 @@ const TextCtrl = {
                 };
             })
 
-            res.status(200).json(result);
-        } catch (err) {
-            return res.status(400).json({ msg: err.message });
-        }
-    },
+*/
+      res.status(200).json(project);
+    } catch (err) {
+      return res.status(400).json({ msg: err.message });
+    }
+  },
 
-/*
+  /*
     delete: async (req, res) => {
         try {
             const project = await Project.findOneAndDelete({

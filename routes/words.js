@@ -7,6 +7,8 @@ router.post("/create", TextCtrl.create);
 
 router.get("/fetchMany", TextCtrl.fetchMany);
 
+router.get("/fetchOg", TextCtrl.fetchOg);
+
 // router.get("/fetchOne/:id", TextCtrl.fetchOne);
 
 // router.delete("/delete/:id", TextCtrl.delete);
