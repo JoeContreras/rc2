@@ -1,6 +1,5 @@
 const os = require('os');
 const chilkat = require('@chilkat/ck-node14-win64');
-/*
 if (os.platform() === 'win32') {
     if (os.arch() === 'ia32') {
         const chilkat = require('@chilkat/ck-node11-win-ia32');
@@ -19,7 +18,6 @@ if (os.platform() === 'win32') {
     const chilkat = require('@chilkat/ck-node11-macosx');
 }
 
-*/
 function chilkatExample(text) {
 
     // This example assumes the Chilkat API to have been previously unlocked.
