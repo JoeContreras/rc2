@@ -1,1 +1,7 @@
 /node_modules
+/.idea/.gitignore
+/.idea/codestream.xml
+/.idea/ej2.iml
+/.idea/jsLibraryMappings.xml
+/.idea/modules.xml
+/.idea/vcs.xml
