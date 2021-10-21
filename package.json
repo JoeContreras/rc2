@@ -14,7 +14,7 @@
     "nodemon": "^2.0.14"
   },
   "dependencies": {
-    "@chilkat/ck-node14-win64": "^9.50.88",
+    "@chilkat/ck-node14-linux64": "latest",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
