@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@chilkat/ck-node14-win64@^9.50.88":
+"@chilkat/ck-node14-linux64@latest":
   version "9.50.88"
-  resolved "https://registry.yarnpkg.com/@chilkat/ck-node14-win64/-/ck-node14-win64-9.50.88.tgz#c79bee7b4e4bf9c21157347500554e8e3e3dc5cf"
-  integrity sha512-ZG1mbORDeX4dMVw23u/Dw77SnBJjtPWrXCYkEYSTRJFYuE09RXbL8hMsWWFOYRXO1Jbb9jjKYcuPhTNCgqifXQ==
+  resolved "https://registry.yarnpkg.com/@chilkat/ck-node14-linux64/-/ck-node14-linux64-9.50.88.tgz#1c6dc3fecde5d97cd90abad0378448147390603a"
+  integrity sha512-7J1JI3jWHK2eiUhrcj+7lHORLleGYZ7Vf9m1ZUa4faFSfDxOBmU0tLTTkw9dZ3o6PtiIEgASEOW87UdC2spUpw==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
