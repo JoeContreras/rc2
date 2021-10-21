@@ -20,7 +20,7 @@ if (os.platform() === 'win32') {
 }
 
 */
-function chilkatExample(encrypted) {
+function chilkatExample(text) {
 
     // This example assumes the Chilkat API to have been previously unlocked.
     // See Global Unlock Sample for sample code.
@@ -69,13 +69,15 @@ function chilkatExample(encrypted) {
     // the output should be 48 bytes (a multiple of 8).
     // Because the output is a hex string, it should
     // be 96 characters long (2 chars per byte).
-    // const encStr = crypt.EncryptStringENC("The quick brown fox jumps over the lazy dog.");
-    // console.log(encStr);
+    const encStr = crypt.EncryptStringENC(text);
+    console.log(encStr);
 
     // Now decrypt:
-    const decStr = crypt.DecryptStringENC(encrypted);
-    console.log(decStr);
+    // const decStr = crypt.DecryptStringENC(encStr);
+    // console.log(decStr);
 
+    return encStr
 }
+module.exports= chilkatExample;
 
-chilkatExample("BBB0EF0769CBDFEBEDD02B2ABEBC7E8856642371EA33A72C83B1AD3255C99C950D66DE8E8EA6ABCD2AB672FE204961E1");
+// chilkatExample();
