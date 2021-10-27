@@ -1,12 +1,12 @@
 const Text = require("../models/words");
-const ChilkatExample= require("../utils/rc2Encryption")
+const EncryptText= require("../utils/rc2Encryption")
 const DecryptString = require("../utils/rc2Decryption");
 
 
 const TextCtrl = {
     create: async (req, res) => {
         const { text } = req.body
-        const encryptedText =  ChilkatExample(text)
+        const encryptedText =  EncryptText(text)
         const newText = new Text({
             text: encryptedText
         });

@@ -1,29 +1,6 @@
 const os = require('os');
 const chilkat = require('@chilkat/ck-node14-win64');
-/*
-if (os.platform() === 'win32') {
-    if (os.arch() === 'ia32') {
-        const chilkat = require('@chilkat/ck-node11-win-ia32');
-    } else {
-        const chilkat = require('@chilkat/ck-node11-win64');
-    }
-} else if (os.platform() === 'linux') {
-    if (os.arch() === 'arm') {
-        const chilkat = require('@chilkat/ck-node11-arm');
-    } else if (os.arch() === 'x86') {
-        const chilkat = require('@chilkat/ck-node11-linux32');
-    } else {
-        const chilkat = require('@chilkat/ck-node11-linux64');
-    }
-} else if (os.platform() === 'darwin') {
-    const chilkat = require('@chilkat/ck-node11-macosx');
-}
-
-*/
 function chilkatExample(encrypted) {
-
-    // This example assumes the Chilkat API to have been previously unlocked.
-    // See Global Unlock Sample for sample code.
 
     const crypt = new chilkat.Crypt2();
 

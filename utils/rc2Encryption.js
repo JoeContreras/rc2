@@ -1,83 +1,58 @@
 const os = require('os');
 const chilkat = require('@chilkat/ck-node14-win64');
-/*
-if (os.platform() === 'win32') {
-    if (os.arch() === 'ia32') {
-        const chilkat = require('@chilkat/ck-node11-win-ia32');
-    } else {
-        const chilkat = require('@chilkat/ck-node11-win64');
-    }
-} else if (os.platform() === 'linux') {
-    if (os.arch() === 'arm') {
-        const chilkat = require('@chilkat/ck-node11-arm');
-    } else if (os.arch() === 'x86') {
-        const chilkat = require('@chilkat/ck-node11-linux32');
-    } else {
-        const chilkat = require('@chilkat/ck-node11-linux64');
-    }
-} else if (os.platform() === 'darwin') {
-    const chilkat = require('@chilkat/ck-node11-macosx');
-}
-
-*/
-function chilkatExample(text) {
-
-    // This example assumes the Chilkat API to have been previously unlocked.
-    // See Global Unlock Sample for sample code.
+function EncryptText(text) {
 
     const crypt = new chilkat.Crypt2();
 
-    // Set the encryption algorithm = "rc2"
+    // Establecer el algoritmo de encriptación = "rc2"
     crypt.CryptAlgorithm = "rc2";
 
-    // CipherMode may be "ecb" or "cbc"
+    // CipherMode puede ser "ecb" o "cbc"
     crypt.CipherMode = "cbc";
 
-    // KeyLength may range from 8 bits to 1024 bits
+    // La longitud de la clave puede ser de entre 8 y 1024 bits
     crypt.KeyLength = 128;
 
-    // RC2 also has an effective key length property
-    // which can also range from 8 bits to 1024 bits:
+    // RC2 también tiene una propiedad de longitud de clave efectiva
+    // que también puede ir de 8 bits a 1024 bits:
     crypt.Rc2EffectiveKeyLength = 128;
 
-    // The padding scheme determines the contents of the bytes
-    // that are added to pad the result to a multiple of the
-    // encryption algorithm's block size.  RC2 has a block
-    // size of 8 bytes, so encrypted output is always
-    // a multiple of 8.
+    // El esquema de relleno determina el contenido de los bytes
+    // que se añaden para rellenar el resultado a un múltiplo del
+    // tamaño de bloque del algoritmo de encriptación.  RC2 tiene un tamaño de bloque
+    // tamaño de bloque de 8 bytes, por lo que la salida encriptada es siempre
+    // un múltiplo de 8.
     crypt.PaddingScheme = 0;
 
-    // EncodingMode specifies the encoding of the output for
-    // encryption, and the input for decryption.
-    // It may be "hex", "url", "base64", or "quoted-printable".
+    // EncodingMode especifica la codificación de la salida para
+    // cifrado, y de la entrada para el descifrado.
+    // Puede ser "hex", "url", "base64", o "quoted-printable".
     crypt.EncodingMode = "hex";
 
-    // An initialization vector is required if using CBC mode.
-    // ECB mode does not use an IV.
-    // The length of the IV is equal to the algorithm's block size.
-    // It is NOT equal to the length of the key.
+    // Se requiere un vector de inicialización si se utiliza el modo CBC.
+    // El modo ECB no utiliza un IV.
+    // La longitud del IV es igual al tamaño del bloque del algoritmo.
+    // NO es igual a la longitud de la clave.
     const ivHex = "0001020304050607";
     crypt.SetEncodedIV(ivHex,"hex");
 
-    // The secret key must equal the size of the key.
-    // For 128-bit encryption, the binary secret key is 16 bytes.
+    // La clave secreta debe ser igual al tamaño de la clave.
+    // Para el cifrado de 128 bits, la clave secreta binaria es de 16 bytes.
     const keyHex = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F";
     crypt.SetEncodedKey(keyHex,"hex");
 
-    // Encrypt a string...
-    // The input string is 44 ANSI characters (i.e. 44 bytes), so
-    // the output should be 48 bytes (a multiple of 8).
-    // Because the output is a hex string, it should
-    // be 96 characters long (2 chars per byte).
+    // Cifrar una cadena...
+    // La cadena de entrada tiene 44 caracteres ANSI (es decir, 44 bytes), por lo que
+    // la salida debe ser de 48 bytes (un múltiplo de 8).
+    // Como la salida es una cadena hexadecimal, debería
+    // ser de 96 caracteres (2 caracteres por byte).
+    // const encStr = crypt.EncryptStringENC("The quick brown fox jumps over the lazy dog.");
+    //BBB0EF0769CBDFEBEDD02B2ABEBC7E8856642371EA33A72C83B1AD3255C99C950D66DE8E8EA6ABCD2AB672FE204961E1
     const encStr = crypt.EncryptStringENC(text);
     console.log(encStr);
 
-    // Now decrypt:
-    // const decStr = crypt.DecryptStringENC(encStr);
-    // console.log(decStr);
-
+    //Regresar resultado
     return encStr
 }
-module.exports= chilkatExample;
+module.exports= EncryptText;
 
-// chilkatExample();
